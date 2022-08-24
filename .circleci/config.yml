@@ -37,6 +37,8 @@ jobs:
     docker:
       - image: "cimg/base:stable"
     steps:
+      - node/install
+      - checkout
       - run:
           name: deploy to aws
           command: |
