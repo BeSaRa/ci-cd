@@ -41,3 +41,8 @@ jobs:
           name: deploy to aws
           command: |
             npm run frontend:deploy
+workflows:
+  build_and_deploy:
+    jobs:
+      - build
+      - deploy
