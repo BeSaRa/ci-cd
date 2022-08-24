@@ -47,7 +47,6 @@ jobs:
           at: .
       - node/install
       - aws-cli/setup
-      - checkout
       - run:
           name: deploy to aws
           command: |
