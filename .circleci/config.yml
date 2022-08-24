@@ -16,7 +16,6 @@ jobs:
     steps:
       - node/install:
           install-yarn: true
-      - run: mkdir -p workspace
       - checkout
       # install dependencies in both apps
       - run:
@@ -37,16 +36,16 @@ jobs:
           command: |
             npm run frontend:build
       - persist_to_workspace:
+          root: .
           paths:
             - build
-          root: workspace
 
   deploy:
     executor: custom
     steps:
-      - attach_workspace:
-          at: /workspace/build
       - node/install
+      - attach_workspace:
+          at: .
       - aws-cli/setup
       - checkout
       - run:
