@@ -1,4 +1,5 @@
 version: 2.1
+
 orbs:
   # orgs contain basc recipes and reproducible actions (install node, aws, etc.)
   node: circleci/node@4.1.0
@@ -31,11 +32,13 @@ jobs:
           name: frontend build
           command: |
             npm run frontend:build
+      - persist_to_workspace
 
   deploy:
     docker:
       - image: "cimg/base:stable"
     steps:
+      - attach_workspace
       - node/install
       - aws-cli/setup
       - checkout
