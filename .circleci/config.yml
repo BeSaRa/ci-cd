@@ -36,16 +36,16 @@ jobs:
           command: |
             npm run frontend:build
       - persist_to_workspace:
-          root: .
+          root: /temp
           paths:
             - build
 
   deploy:
     executor: custom
     steps:
-      - node/install
       - attach_workspace:
-          at: .
+          at: /temp/build
+      - node/install
       - aws-cli/setup
       - checkout
       - run:
