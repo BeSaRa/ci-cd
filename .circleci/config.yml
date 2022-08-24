@@ -12,7 +12,6 @@ jobs:
     steps:
       - node/install:
           install-yarn: true
-      - aws-cli/setup
       - checkout
       # install dependencies in both apps
       - run:
@@ -38,6 +37,7 @@ jobs:
       - image: "cimg/base:stable"
     steps:
       - node/install
+      - aws-cli/setup
       - checkout
       - run:
           name: deploy to aws
