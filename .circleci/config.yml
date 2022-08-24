@@ -32,7 +32,12 @@ jobs:
           name: frontend build
           command: |
             npm run frontend:build
+
+  deploy:
+    docker:
+      - image: "cimg/base:stable"
+    steps:
       - run:
-          name: front end deploy
+          name: deploy to aws
           command: |
             npm run frontend:deploy
