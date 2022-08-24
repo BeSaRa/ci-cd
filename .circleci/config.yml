@@ -45,7 +45,6 @@ jobs:
     steps:
       - attach_workspace:
           at: .
-      - node/install
       - aws-cli/setup
       - run:
           name: deploy to aws
